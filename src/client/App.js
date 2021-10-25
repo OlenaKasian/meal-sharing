@@ -1,30 +1,53 @@
 import React from "react";
-import Header from "./MainPage/Header";
-import ResearchInput from "./MainPage/ResearchInput";
-import MealList from "./MainPage/MealList";
-import Footer from "./MainPage/Footer"
-
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import TestComponent from "./components/TestComponent/TestComponent";
+import Header from "./components/MainPage/Header";
+import ResearchInput from "./components/MainPage/ResearchInput";
+import MealList from "./components/MainPage/MealList";
+import Footer from "./components/MainPage/Footer"
+import Home from "./components/MainPage/Home";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import TestComponent from "./components/TestComponent/TestComponent";
 
 function App() {
-  return (
-<Header />
-<ResearchInput />
-<MealList />
-<Footer />
+  const [meals, setMeals] = React.useState([]);
+  const [reviews, setReviews] = React.useState([]);
+  React.useEffect(() => {
+    fetch("/api/meals")
+      .then((res) => res.json())
+      .then((data) => {
+        setMeals(data);
+      });
+    fetch("/api/reviews")
+      .then((res) => res.json())
+      .then((data) => {
+        setReviews(data);
+      });
+  }, []);
 
-    // <Router>
-    //   <Route exact path="/">
-    //     <p>test</p>
-    //   </Route>
-    //   <Route exact path="/lol">
-    //     <p>lol</p>
-    //   </Route>
-    //   <Route exact path="/test-component">
-    //     <TestComponent></TestComponent>
-    //   </Route>
-    // </Router>
+  return (
+    <Router><Header />
+      <Route exact path="/">
+        <Home meals={meals} reviews={reviews} />
+      </Route>
+      <Route exact path="/meals">
+        <MealList meals={meals} />
+      </Route>
+      {/* <Route exact path={`/meals/:id`}>
+        <AddReservation meals={meals} />
+      </Route>
+      <Route exact path={`/meals/:id/reviews`}>
+        <Mealreviews meals={meals} reviews={reviews} />
+      </Route>
+      <Route exact path="/create-meal">
+        <Createmeal></Createmeal>
+      </Route>
+      <Route exact path="/about">
+        <About />
+      </Route> */}
+
+
+      <Footer />
+    </Router>
+
   );
 }
 

@@ -2,14 +2,14 @@ const express = require("express");
 const router = express.Router();
 const knex = require("../database");
 
-router.get("/", async (request, response) => {
-  try {
-    const titles = await knex("meals").select("title");
-    response.json(titles);
-  } catch (e) {
-    throw e;
-  }
-});
+// router.get("/", async (request, response) => {
+//   try {
+//     const titles = await knex("meals").select("title");
+//     response.json(titles);
+//   } catch (e) {
+//     throw e;
+//   }
+// });
 
 router.post("/", async (request, response) => {
   try {

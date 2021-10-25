@@ -7,6 +7,7 @@ import Home from "./components/MainPage/Home";
 import Details from "./components/MainPage/Details";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import TestComponent from "./components/TestComponent/TestComponent";
+import Newmeal from "./components/MainPage/NewMeal";
 
 function App() {
   const [meals, setMeals] = React.useState([]);
@@ -37,10 +38,10 @@ function App() {
       </Route>
       {/*<Route exact path={`/meals/:id/reviews`}>
         <Mealreviews meals={meals} reviews={reviews} />
+      </Route>*/}
+      <Route exact path="/newmeal">
+        <Newmeal />
       </Route>
-      <Route exact path="/create-meal">
-        <Createmeal></Createmeal>
-  </Route>*/}
       <Route exact path="/about">
         <About />
       </Route>
@@ -53,4 +54,3 @@ function App() {
 }
 
 export default App;
-

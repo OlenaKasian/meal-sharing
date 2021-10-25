@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "./components/MainPage/Header";
-import ResearchInput from "./components/MainPage/ResearchInput";
 import MealList from "./components/MainPage/MealList";
 import Footer from "./components/MainPage/Footer"
 import Home from "./components/MainPage/Home";

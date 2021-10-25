@@ -5,6 +5,7 @@ import bg from './../../assets/images/mainbackround.png'
 const Home = (props) => {
     const [search, setSearch] = useState("")
     const [meals, setMeals] = useState([])
+
     useEffect(() => {
         if (search) {
             fetch(`/api/meals?title=${search}`)
@@ -26,12 +27,10 @@ const Home = (props) => {
                 {meals.map((meal) => (
                     <div key={meal.id}>
 
-                        <span >{meal.title}</span>
+                        <h3>{meal.title}</h3>
                         <p>{meal.description}</p>
+                        <button><Link to={`/meals/${meal.id}`}>More Details</Link></button>
 
-                        <div >
-                            <Link to={`/meals/${meal.id}`}>Details</Link>
-                        </div>
                     </div>
 
 

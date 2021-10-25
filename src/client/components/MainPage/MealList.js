@@ -12,12 +12,12 @@ function MealList(props) {
                 {props.meals.map((meal) => (
                     <li key={meal.id}>
                         <p>
-                            id:{meal.id}</p>
-                        <p> title={meal.title}</p>
-                        <p> description={meal.description}</p>
-                        <p> location={meal.location}</p>
-                        <p> max_reservations={meal.max_reservations}</p>
-                        <p> price={meal.price}
+                            id: {meal.id}</p>
+                        <p> title: {meal.title}</p>
+                        <p> description: {meal.description}</p>
+                        <p> location: {meal.location}</p>
+                        <p> max_reservations: {meal.max_reservations}</p>
+                        <p> price: {meal.price}
 
                         </p>
                         <button><Link to={`/meals/${meal.id}`}>More Details</Link></button>

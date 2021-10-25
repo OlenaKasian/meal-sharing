@@ -75,14 +75,14 @@ router.get("/", async (request, response) => {
     return response.json(meals);
   }
   else if (request.query.availableReservations) {
-    const meals = await knex("meals").join('reservation', { 'meal.id': 'Reservation.meal_id' })
-      .select('meal.id', 'meal.title', "meal.when", 'meal.max_reservations  as All_reservations',
+    const meals = await knex("meals").join('reservations', { 'meals.id': 'reservations.meal_id' })
+      .select('meals.id', 'meals.title', "meals.when", 'meals.max_reservations  as All_reservations',
         knex.raw(
-          'meal.max_reservations - sum(Reservation.number_of_guests) as "available_reservations"',
+          'meals.max_reservations - sum(reservations.number_of_guests) as "available_reservations"',
         ))
-      .sum('Reservation.number_of_guests as reservations_placed')
-      .having('meal.max_reservations', '>', "sum('reservation.number_of_guests')")
-      .groupBy('reservation.meal_id');
+      .sum('reservations.number_of_guests as reservations_placed')
+      .having('meals.max_reservations', '>', "sum('reservations.number_of_guests')")
+      .groupBy('reservations.meal_id');
     return response.json(meals);
   }
   else {

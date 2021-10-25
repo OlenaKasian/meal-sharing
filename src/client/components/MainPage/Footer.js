@@ -14,6 +14,8 @@ function Footer() {
                 <a href="javascript:void(0);" className="icon" onclick="myFunction()">
                     <i className="fa fa-bars"></i>
                 </a> */}
+                <p>© 2021 MealSharing, Inc.</p>
+                <Link to="/newmeal">New Meal</Link>
                 <Link to="/"><img src={logo} alt="logo" id="logo" width={25} />Meal Sharing</Link>
                 <Link to="/meals">Find meals</Link>
                 <Link to="/about">About us</Link>

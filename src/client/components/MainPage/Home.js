@@ -23,17 +23,18 @@ const Home = (props) => {
         <div><hr />
             <input type='text' placeholder="search for meal" onChange={(e) => setSearch(e.target.value)} />
             <hr />
-            <div>
+            <div className="row">
 
                 {meals.map((meal) => (
-                    <div key={meal.id}>
+                    <div className="column">
+                        <div key={meal.id} className="card">
 
-                        <h3>{meal.title}</h3>
-                        <p>{meal.description}</p>
-                        <button><Link to={`/meals/${meal.id}`}>More Details</Link></button>
+                            <h3>{meal.title}</h3>
+                            <p>{meal.description}</p>
+                            <button><Link to={`/meals/${meal.id}`}>More Details</Link></button>
 
+                        </div>
                     </div>
-
 
                 ))}
             </div>

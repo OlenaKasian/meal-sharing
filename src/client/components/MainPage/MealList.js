@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import selectFood from './../../assets/images/selectfood.png';
+import "./Home.css"
 
 function MealList(props) {
     return (
         <div>
             <div>
-                <img src={selectFood} alt="meal photo" id="meal-photo" />
+                <img src={selectFood} alt="meal photo" id="meal-photo" className="imagePic" />
             </div>
             <ul >
                 {props.meals.map((meal) => (

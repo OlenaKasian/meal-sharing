@@ -1,51 +1,55 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import bg from './../../assets/images/mainbackround.png'
+import MealList from './MealList';
 import "./Home.css"
 
 const Home = (props) => {
-    const [search, setSearch] = useState("")
-    const [meals, setMeals] = useState([])
+    const [serchPhrase, setSearchPhrase] = useState("")
+    const [searchResultMeals, setSearchResultMeals] = useState([])
+    const [serchPriceLimit, setSerchPriceLimit] = useState(0)
+    const [searchNumberLimit, setSearchNumberLimit] = useState(0)
+    const [maximumReservationsAvailable, setMaximumReservationsAvailable] = useState(0)
 
     useEffect(() => {
-        if (search) {
-            fetch(`/api/meals?title=${search}`)
+        let urlWithoutParameters = '/api/meals?';
+        let finalUrl = urlWithoutParameters
+
+        if (serchPhrase) {
+            finalUrl += `&title=${serchPhrase}`;
+        }
+        if (serchPriceLimit) {
+            finalUrl += `&maxPrice=${serchPriceLimit}`;
+        }
+        if (searchNumberLimit) {
+            finalUrl += `&limit=${searchNumberLimit}`;
+        }
+        if (maximumReservationsAvailable) {
+            finalUrl += `&maxReservationsAvailable=${maximumReservationsAvailable}`;
+        }
+
+        if (finalUrl !== urlWithoutParameters) {
+            fetch(finalUrl)
                 .then(res => res.json())
-                .then(data => {
-                    setMeals(data)
+                .then(fetchedMeals => {
+                    setSearchResultMeals(fetchedMeals)
                 })
         }
-    }, [search])
+        else {
+            setSearchResultMeals([])
+        }
+    }, [serchPhrase, serchPriceLimit, searchNumberLimit, maximumReservationsAvailable])
 
     return (<>
-
-
-        <div><hr />
-            <input type='text' placeholder="search for meal" onChange={(e) => setSearch(e.target.value)} />
-            <hr />
-            <div className="row">
-
-                {meals.map((meal) => (
-                    <div className="column">
-                        <div key={meal.id} className="card">
-
-                            <h3>{meal.title}</h3>
-                            <p>{meal.description}</p>
-                            <button><Link to={`/meals/${meal.id}`}>More Details</Link></button>
-
-                        </div>
-                    </div>
-
-                ))}
+        <div className="mainArea">
+            <div className="searchCriteria">
+                <input type='text' name="search" placeholder="search meal" onChange={(e) => setSearchPhrase(e.target.value)} />
+                <input type='number' name="priceLimit" placeholder="max price" onChange={(e) => setSerchPriceLimit(e.target.value)} />
+                <input type='number' name="reservationAvailable" placeholder="max reservations available" onChange={(e) => setMaximumReservationsAvailable(e.target.value)} />
+                <input type='number' name="totalLimit" placeholder="max number of meals to show" onChange={(e) => setSearchNumberLimit(e.target.value)} />
             </div>
+            <MealList meals={searchResultMeals} />
         </div>
-
-
-        <img src={bg} alt="background-image" className="imagePic" />
-
     </>
     );
 };
-
 
 export default Home;

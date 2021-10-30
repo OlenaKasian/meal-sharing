@@ -1,38 +1,79 @@
 .imagePic {
-    width: 100%;
-    height: auto;
-  }
+  width: 100%;
+  height: auto;
+  padding-left: 20%;
+  padding-right: 20%;
+}
 
-  /* Float 3 columns side by side */
+/* Float 3 columns side by side */
 .column {
-    float: left;
-    width: 33%;
-    padding: 0 10px;
+  float: left;
+  width: 33%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {
+  margin: 0 -5px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
   }
-  
-  /* Remove extra left and right margins, due to padding */
-  .row {margin: 0 -5px;}
-  
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* Responsive columns */
-  @media screen and (max-width: 600px) {
-    .column {
-      width: 100%;
-      display: block;
-      margin-bottom: 20px;
-    }
-  }
-  
-  /* Style the counter cards */
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
-    text-align: center;
-    background-color: #f1f1f1;
-  }
+}
+
+/*Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+input {
+  width: 250px;
+  border: 2px solid rgb(14, 133, 73);
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  transition: width 0.4s ease-in-out;
+  margin: 12px;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+
+button {
+  background-color: #04AA6D;
+  border-radius: 8px;
+  font-weight: 295;
+  color: rgb(255, 255, 255);
+  padding: 5px;
+  margin: 5px;
+  font-size: 17px;
+}
+
+.mainArea {
+  background-image: url("./../../assets/images/mainbackround.png");
+  min-height: 500px; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.reserve-picture {
+  font-weight: 200px;
+  height: 220px;
+}

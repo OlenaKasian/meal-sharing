@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import selectFood from './../../assets/images/selectfood.png';
 
+
 const Details = (props) => {
     const [reserve, setReserve] = React.useState(false);
     const params = useParams();
@@ -54,25 +55,19 @@ const Details = (props) => {
 
     };
     return (
-        <div>
-            <div>
-                <img src={selectFood} alt="meal photo" id="meal-photo" />
-            </div>
+        <div className="reserve-page">
             {meal ? <div>
-
-                <p>
-                    id: {meal.id}</p>
-                <p> title: {meal.title}</p>
+                <p>{meal.title}</p>
+                <img className="reserve-picture" src={selectFood} alt="meal photo" />
+                <p> id: {meal.id}</p>
                 <p> description: {meal.description}</p>
                 <p> location: {meal.location}</p>
                 <p> max_reservations: {meal.max_reservations}</p>
-                <p> price: {meal.price}</p>
+                <p> price: {meal.price} DKK</p>
                 <p> Available Reservations: {availableReservations ? availableReservations : meal.max_reservations}</p>
-
                 <button onClick={() => setReserve(true)}>Reserve</button>
-
-
             </div> : "Loading"}
+
             {reserve ? <>
                 <form onSubmit={handleSubmit}>
                     <div>
@@ -81,7 +76,6 @@ const Details = (props) => {
                             type="number"
                             min="1"
                             max={availableReservations}
-                            id="no_of_guests"
                             value={guests}
                             onChange={(e) => setGuests(e.target.value)}
                         />

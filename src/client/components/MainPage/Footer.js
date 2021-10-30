@@ -1,5 +1,5 @@
 import React from "react";
-import "./Footer.css";
+import "./HeaderFooter.css";
 import { Link } from "react-router-dom";
 import logo from "./../../assets/images/logo.png";
 
@@ -7,18 +7,24 @@ function Footer() {
     return (
         <nav>
             <div className="topnav" id="myTopnav">
-                {/* <a href="#home" className="active">Home</a>
-                <a href="#news">News</a>
-                <a href="#contact">Contact</a>
-                <a href="#about">About</a>
-                <a href="javascript:void(0);" className="icon" onclick="myFunction()">
-                    <i className="fa fa-bars"></i>
-                </a> */}
-                <p>© 2021 MealSharing, Inc.</p>
-                <Link to="/newmeal">New Meal</Link>
                 <Link to="/"><img src={logo} alt="logo" id="logo" width={25} />Meal Sharing</Link>
-                <Link to="/meals">Find meals</Link>
-                <Link to="/about">About us</Link>
+                <div className="footer-rigth" id ="footer-rigth">
+                    <div className="contacts" id="contacts">
+                        <p> Contacts:</p>
+                        <ul>
+                            <li>Olena Kasiianenko</li>
+                            <li>tel: 50 14 34 22</li>
+                            <li>e-mail: olena.kasiianenko@gmail.com</li>
+                        </ul>
+                    </div>
+                    <div className="links">
+                        <a href="https://slack.com/" target="_blank">
+                            <i className="fab fa-slack"></i>
+                        </a>
+                    </div>
+
+
+                </div>
             </div>
         </nav >
 

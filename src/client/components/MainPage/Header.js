@@ -1,27 +1,19 @@
 import React from "react";
-import "./Footer.css";
+import "./HeaderFooter.css";
 import { Link } from "react-router-dom";
 import logo from "./../../assets/images/logo.png";
 
 function Header() {
     return (
-
-
-        <div className="topnav" id="myTopnav">
-            {/* <a href="#home" className="active">Home</a>
-                <a href="#news">News</a>
-                <a href="#contact">Contact</a>
-                <a href="#about">About</a>
-                <a href="javascript:void(0);" className="icon" onclick="myFunction()">
-                    <i className="fa fa-bars"></i>
-                </a> */}
-            <Link to="/"><img src={logo} alt="logo" id="logo" width={25} />Meal Sharing</Link>
-            <Link to="/meals">Find meals</Link>
-            <Link to="/newmeal">New Meal</Link>
-            <Link to="/about">About us</Link>
-        </div>
-
-
+        <nav>
+            <div className="topnav" id="myTopnav">
+                <Link to="/"><img src={logo} alt="logo" id="logo" width={35} />  Meal Sharing</Link>
+                <div className="header-right">
+                <Link to="/meals">Find meals</Link>
+                <Link to="/newmeal">Create new meal</Link>
+                </div>
+            </div>
+        </nav >
     );
 }
 
